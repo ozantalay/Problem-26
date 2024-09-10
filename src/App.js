@@ -10,16 +10,16 @@ export default function Stopwatch() {
 
   useEffect(()=>{
     if(isRunning){
-      timer.current=setInterval(()=>{
+      timer.current=setInterval(()=>{  // setInterval hazır fonksiyon belirtilen alarıklarla milisaniye cinsinden fonksiyonu çağırır.
         setTime((prevTime)=>prevTime+1)
         },1000)
       }else{
-        clearInterval(timer.current)
+        clearInterval(timer.current)  //isRunning false olduğunda clearInterval fonksiyonunu çağırır (hazır fonksiyon) durmasını sağlar.
       }
-      return ()=>clearInterval(timer.current)
+      return ()=>clearInterval(timer.current)   // state değiştiğinde gereksiz yer kaplamamasın için zamanlayıcıyı temizler
 
     
-  },[isRunning]);
+  },[isRunning]);  // sadece is running stat i değiştiğinde çalışır.
 
   const startTimer=()=>{
     setIsRunning(true)
